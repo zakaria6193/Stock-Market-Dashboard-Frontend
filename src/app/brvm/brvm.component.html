@@ -1,0 +1,1019 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+   <!-- about------------------------------------ CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- about------------------------------------ CSS -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    
+  </head>
+  <body style="background: #EEF2F7;" >
+    
+    
+    
+          
+    
+    
+
+    <nav style="background-color:#6d7fcc !important ;" class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{ rxTime | date: 'hh:mm:ss a' }}</a><a>{{realtimeprice}}</a>
+      <div class="tcontainer">
+        <div class="ticker-wrap">
+            <div class="ticker-move" >
+                <div *ngFor="let c of compan; let i = index" class="ticker-item">{{symbol[i]}} : {{last[i]}}</div>
+                
+            </div>
+        </div>
+    </div>
+<input  name="searchsymbol" type="text" class="form-control form-control-primary w-100" placeholder="Search..." #box (keyup.enter)="onSearch(box.value)">
+<ul class="navbar-nav px-3">
+  <li class="nav-item text-nowrap">
+    <a class="nav-link" href="#">Logout</a>
+  </li>
+</ul>
+ 
+    </nav>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div [hidden]="!disp2" class="col-md-2 bg-light d-none d-md-block sidebar">
+          <div class="left-sidebar">
+            <nav class="left-sidebar" id="sidebar">
+              <div class="sidebar-header">
+                  <h3>STOCK AI</h3>
+              </div>
+  
+              <ul class="list-unstyled components">
+                  <p><span style="cursor: pointer;" (click)="openModalTunindex()">Brvm</span></p>
+
+
+              <div class="dropdown">
+                  <li  class="active">
+                    <a href="#">index <i class="fa fa-caret-down"></i></a> 
+
+                </li>
+                <div class="dropdown-content">
+                  <a routerLink="/masi">Moroccan All Shares</a>
+                  
+                  <a routerLink="/home">Tunindex</a>
+                  <a routerLink="/brvm">BRVM 10</a>
+                </div>
+              </div>
+
+                  
+                  <li class="active">
+                      <a href="javascript:void(0);"><span (click)="openModalDialog()">MultiPrice Visualization</span></a>
+                  </li>
+                  <li class="active">
+                    <a href="javascript:void(0);"><span (click)="openModalAbout()">About Service</span></a>
+                </li>
+                  
+                  <div class="dropdown">
+                  <li  class="active">
+                    <a href="#">Indicator <i class="fa fa-caret-down"></i></a> 
+
+                </li>
+                <div class="dropdown-content">
+                  <a href="javascript:void(0);" (click)="openModalMA()">Moving Average</a>
+                  <a href="javascript:void(0);"(click)="openModalMACD()">MACD</a>
+                  <a href="javascript:void(0);"(click)="openModalEMA()">EMA</a>
+                </div>
+              </div>
+
+                  <li class="active">
+                      <a href="#">Contact</a>
+                  </li>
+              </ul>
+  
+              <ul class="list-unstyled CTAs">
+                 
+                  <li>
+                      <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Logout</a>
+                  </li>
+              </ul>
+          </nav>
+
+           <!--------------------------------historicalcrypto---------------------------------------------->
+  <div><div class="backdrop" [ngStyle]="{'display':display13}"></div></div>
+
+  <div  class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display13}">
+    <!-- modal-dialog -->
+    <div class="modal-dialog modal-xl" role="document">
+      <!-- modal-content -->
+      <div class="modal-content">
+        <!-- modal-header -->
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="closemodalcrypto()"><span aria-hidden="true">&times;</span></button>
+          <!-- <h4 class="modal-title">Login</h4> -->
+        </div>
+  
+        <!-- modal-body -->
+        <div class="modal-body">
+          <div class="w3-container w3-content w3-center w3-padding-64" id="band">
+            <ngx-tabset customNavClass="nav-test-class" customTabsClass="container">
+              <ngx-tab tabTitle="TABLE" tabSubTitle="Numerical Data">
+          <h2 class="w3-wide">Historical Data</h2>
+          <div   class="table-wrapper-scroll-y my-custom-scrollbar">
+          <div class="table-responsive">
+            <table class="table table-hover table-nowrap">
+              <thead class="thead-light">
+            
+                <tr>
+                 
+                    
+                <th scope="col">Date</th>
+                <th scope="col">Open</th>
+                <th scope="col">High</th>
+                <th scope="col">Low</th>
+                <th scope="col">Volume</th>
+                <th scope="col">Close</th>
+                
+                  
+                  
+                </tr></thead>
+              <tbody>
+              <tr *ngFor="let c of historicalopencrypto; let i = index">
+              <td data-label=""><a class="text-current" href="#">{{historicaldatecrypto[i]}}</a></td>
+              <td data-label=""><a class="text-current" href="#">{{historicalopencrypto[i]}}</a></td>
+              <td data-label=""><a class="text-current" href="#">{{historicalhighcrypto[i]}}</a></td>
+              <td data-label=""><a class="text-current" href="#">{{historicallowcrypto[i]}}</a></td>
+              <td data-label=""><a class="text-current" href="#">{{historicalvolumecrypto[i]}}</a></td>
+              <td data-label=""><a class="text-current" href="#">{{historicalclosecrypto[i]}}</a></td>
+              
+              
+              
+              
+              </tr></tbody>
+            </table>
+            </div>
+          </div>
+  
+        </ngx-tab>
+  
+        <ngx-tab tabTitle="CHART" tabSubTitle="Chart">
+  
+          <div  style="width: 60vw !important; height: 350px;" >
+            <canvas  #myCanvascrypto > {{chartlinecrypto}} </canvas>
+          </div>
+      
+  
+        </ngx-tab>
+  
+        <ngx-tab tabTitle="MOVING AVERAGE" tabSubTitle="Moving Average">
+  
+          <div  style="width: 60vw !important; height: 350px;" >
+            <canvas  #myCanvasMAcrypto > {{chartMAcrypto}} </canvas>
+          </div>
+      
+  
+        </ngx-tab>
+  
+        <ngx-tab tabTitle="NEWS" tabSubTitle="News">
+  
+          <div  >
+           <ul>
+             <li *ngFor="let c of historicalnewscrypto; let i = index"> {{historicalnewscrypto[i]}}</li>
+           </ul>
+          </div>
+      
+  
+        </ngx-tab>
+  
+        <ngx-tab tabTitle="PREDICTION" tabSubTitle="Tomorrow's Price">
+  
+          <div>
+            <p>Tomorrow's Price will be near to {{predictioncrypto}} , Take your Choice</p><br>
+            <p>{{messagecrypto}}</p>
+           
+          </div>
+      
+  
+        </ngx-tab>
+  
+        </ngx-tabset>
+  
+    
+        </div>
+        </div>
+  
+        <!-- modal-footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="closemodalcrypto()" >Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!--------------------------------------------------------------------------------->
+            <div><div class="backdrop" [ngStyle]="{'display':display}"></div></div>
+
+            <div style="margin-top:80px ;" class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+              <!-- modal-dialog -->
+              <div class="modal-dialog" role="document">
+                <!-- modal-content -->
+                <div class="modal-content">
+                  <!-- modal-header -->
+                  <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span aria-hidden="true">&times;</span></button>
+                    <!-- <h4 class="modal-title">Login</h4> -->
+                  </div>
+            
+                  <!-- modal-body -->
+                  <div class="modal-body">
+                   
+                      
+                <input  style="background-color: rgb(133, 152, 233);color: rgb(26, 23, 23);" name="search2symbol" type="text" class="form-control form-control-primary w-100" placeholder="Search..." #boxx (keyup.enter)="Multiplelines(boxx.value)">
+                <p [hidden]="!disp4" ><select id="cars" (change)='changeMultiple($event)'>
+                  <option value="daily" selected>daily</option>
+                  <option value="monthly"  >monthly</option>
+                </select></p>
+                <div  id="piechart" class="card">
+                   
+                <div [hidden]="!disp4" class="container" style="width: 400px; height: 400px;"  >
+                  <canvas   #myCanvasmultiline  > {{chartmultiline}} </canvas>
+                </div>
+              </div>
+              
+                  </div>
+            
+                  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="closeModalDialog()" >Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- About--------------------------------------------------- -->
+            <div><div class="backdrop" [ngStyle]="{'display':display2}"></div></div>
+
+            <div style="width:70%" style="margin-top:40px ;" class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display2}">
+              <!-- modal-dialog -->
+              <div class="modal-dialog" role="document">
+                <!-- modal-content -->
+                <div class="modal-content">
+                  <!-- modal-header -->
+                  <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" (click)="closeModalAbout()"><span aria-hidden="true">&times;</span></button>
+                    <!-- <h4 class="modal-title">Login</h4> -->
+                  </div>
+            
+                  <!-- modal-body -->
+                  <div class="modal-body">
+                    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+                    <h2 class="w3-wide">Stock Ai</h2>
+                    
+    <p class="w3-opacity">
+    <i> <br><img style="max-width:40%;
+      max-height:40%; padding-bottom:2px ;"[src]="pixlogo"></i></p>
+    <p class="w3-justify">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
+      .</p>
+              
+                  </div>
+                  </div>
+            
+                  <!-- modal-footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="closeModalAbout()" >Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- pdf--------------------------------------------------- -->
+            <div><div class="backdrop" [ngStyle]="{'display':displayPDF}"></div></div>
+           
+            <div  class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayPDF}">
+              <!-- modal-dialog -->
+              <div class="modal-dialog modal-xl" role="document">
+                <!-- modal-content -->
+                <div class="modal-content">
+                  <!-- modal-header -->
+                  <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" (click)="closePDF()"><span aria-hidden="true">&times;</span></button>
+                    <!-- <h4 class="modal-title">Login</h4> -->
+                  </div>
+            
+                  <!-- modal-body -->
+                  <div class="modal-body" style="overflow-y: scroll!important;max-height: calc(100vh - 210px)!important;">
+                    <div id="contentToConvert" #contentToConvert class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" >
+                    <h2 class="w3-wide">{{sy}}</h2>
+                    <h5 >Last 5 Months Data </h5>
+    
+     <table style="width: 150!important; height: 100!important;" class="table table-hover table-nowrap">
+      <thead class="thead-light">
+        <tr>
+          
+         
+          <th scope="col">Date</th>
+      <th scope="col">Price</th>
+      <th scope="col">Open</th>
+      <th scope="col">High</th>
+      <th scope="col">Low</th>
+
+      
+      
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="height: 5px !important;" *ngFor="let c of pricepdf; let i = index">
+          
+          <td data-label=""> <a class="text-current" href="#">{{responsepdf.monthly[i]}}</a> </td>
+          
+    <td data-label=""><a class="text-current" href="#">{{responsepdf.price[i]}}</a></td>
+    <td data-label=""><a class="text-current" href="#">{{responsepdf.open[i]}}</a></td>
+    <td data-label=""><a class="text-current" href="#">{{responsepdf.high[i]}}</a></td>
+    <td data-label=""><a class="text-current" href="#">{{responsepdf.low[i]}}</a></td>
+    
+    
+        </tr>
+        
+      </tbody>
+    </table> <br>
+    <h5 >Last 5 Months Graph (Daily) </h5>
+    <div class="container" style="width: 150 !important; height: 250px;"  >
+        
+      <canvas  #myCanvaslinepdf > {{chartlinepdf}} </canvas>
+    </div>
+              
+                  </div>
+                  <div id="contentToConvert2" #contentToConvert2 class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" >
+                    <h5 >MACD Graph (Daily) </h5>
+                    <div class="container" style="width: 150 !important; height: 250px;"  >
+                        
+                      <canvas  #myCanvaslinepdfmacd > {{chartlinepdfmacd}} </canvas>
+                    </div>
+                    <h5 >news</h5>
+                    <ul>
+                      <li style="float: left !important;" *ngFor="let c of companynews"> {{c}}</li>
+                    </ul>
+                  
+                  
+                  </div>
+                  <button type="button" class="btn btn-outline-secondary" style="height: 54px !important;" (click)="captureScreen()">get PDF</button>
+                  </div>
+            
+                  <!-- modal-footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="closePDF()" >Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MA--------------------------------------------------- -->
+            <div><div class="backdrop" [ngStyle]="{'display':displayMA}"></div></div>
+
+            <div style="width:57vw !important;  height: 400px !important; " style="margin-top:40px ;" class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayMA}">
+              <!-- modal-dialog -->
+              <div class="modal-dialog" role="document">
+                <!-- modal-content -->
+                <div class="modal-content" style="width:57vw !important; ">
+                  <!-- modal-header -->
+                  <div class="modal-header" style="width:57vw !important; ">
+                    <button type="button" class="close" aria-label="Close" (click)="closeModalMA()"><span aria-hidden="true">&times;</span></button>
+                    <!-- <h4 class="modal-title">Login</h4> -->
+                  </div>
+            
+                  <!-- modal-body -->
+                  <div class="modal-body" style="width:57vw !important;  " >
+                    <h2 class="w3-wide" style="margin-left: 90px !important ;">MOVING AVERAGE</h2>
+                    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px ; margin-left:70px !important;" id="band">
+                    
+                    <input type="text" placeholder="Company Symbole" id="symbolMA" name="symbolMA" style="float: left !important;" #symbolMA /><input type="number" id="periodMA" name="periodMA" style="float: left !important;" min="7" max="365" value="7" #periodMA />
+                      <button type="button" class="btn btn-outline-secondary" style="height: 54px !important; height: 27px !important; " (click)="MAprocess({symb: symbolMA.value, per: periodMA.value})">Apply</button></div>
+    
+    <div [hidden]="!dispMAperiod" class="container" style="width: 53vw !important;  height: 350px;"  >
+      <canvas   #myCanvasMAperiod  > {{chartMAperiod}} </canvas>
+      <button type="button" class="btn btn-outline-secondary" style="height: 54px !important; height: 27px !important; margin-left: 15px !important; margin-top: 30px !important; " (click)="resetzoomMA()">Reset Zoom</button>
+    </div>
+    
+           
+              
+                  </div>
+                  </div>
+            
+                  <!-- modal-footer -->
+                  
+                </div>
+              </div>
+            
+            <!-- MACD--------------------------------------------------- -->
+            <div><div class="backdrop" [ngStyle]="{'display':displayMACD}"></div></div>
+
+            <div style="width:57vw !important;  height: 400px !important; " style="margin-top:40px ;" class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayMACD}">
+              <!-- modal-dialog -->
+              <div class="modal-dialog" role="document">
+                <!-- modal-content -->
+                <div class="modal-content" style="width:57vw !important; ">
+                  <!-- modal-header -->
+                  <div class="modal-header" style="width:57vw !important; ">
+                    <button type="button" class="close" aria-label="Close" (click)="closeModalMACD()"><span aria-hidden="true">&times;</span></button>
+                    <!-- <h4 class="modal-title">Login</h4> -->
+                  </div>
+            
+                  <!-- modal-body -->
+                  <div class="modal-body" style="width:57vw !important;  " >
+                    <h2 class="w3-wide" style="margin-left: 90px !important ;">MACD</h2>
+                    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px ; margin-left:70px !important;" id="band">
+                    
+                    <input type="text" placeholder="Company Symbole" id="symbolMA" name="symbolMA" style="float: left !important;" #symbolMACD /><input type="number" id="fastMACD" name="fastMACD" style="float: left !important;" min="3" max="12" value="12" #fastMACD />
+                    <input type="number" id="slowMACD" name="slowMACD" style="float: left !important;" min="26" max="35" value="26" #slowMACD /><input type="number" id="signalMACD" name="signalMACD" style="float: left !important;" min="5" max="9" value="9" #signalMACD />
+                      <button type="button" class="btn btn-outline-secondary" style="height: 54px !important; height: 27px !important; " (click)="MACDprocess({symb: symbolMACD.value, fast: fastMACD.value, slow: slowMACD.value, single: signalMACD.value})">Apply</button></div>
+    
+    <div [hidden]="!dispMACD" class="container" style="width: 53vw !important;  height: 350px;"  >
+      <canvas   #myCanvasMACD  > {{chartMACD}} </canvas>
+      <button type="button" class="btn btn-outline-secondary" style="height: 54px !important; height: 27px !important; margin-left: 15px !important; margin-top: 30px !important; " (click)="resetzoomMACD()">Reset Zoom</button>
+    </div>
+           
+              
+                  </div>
+                  </div>
+            
+                  <!-- modal-footer -->
+                  
+                </div>
+              </div>
+            <!-- EMA--------------------------------------------------- -->
+            <div><div class="backdrop" [ngStyle]="{'display':displayEMA}"></div></div>
+
+            <div style="width:57vw !important;  height: 400px !important; " style="margin-top:40px ;" class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayEMA}">
+              <!-- modal-dialog -->
+              <div class="modal-dialog" role="document">
+                <!-- modal-content -->
+                <div class="modal-content" style="width:57vw !important; ">
+                  <!-- modal-header -->
+                  <div class="modal-header" style="width:57vw !important; ">
+                    <button type="button" class="close" aria-label="Close" (click)="closeModalEMA()"><span aria-hidden="true">&times;</span></button>
+                    <!-- <h4 class="modal-title">Login</h4> -->
+                  </div>
+            
+                  <!-- modal-body -->
+                  <div class="modal-body" style="width:57vw !important;  " >
+                    <h2 class="w3-wide" style="margin-left: 90px !important ;">EXPONENTIAL MOVING AVERAGE</h2>
+                    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px ; margin-left:70px !important;" id="band">
+                    
+                    <input type="text" placeholder="Company Symbole" id="symbolEMA" name="symbolEMA" style="float: left !important;" #symbolEMA /><input type="number" id="periodEMA" name="periodEMA" style="float: left !important;" min="7" max="365" value="7" #periodEMA />
+                      <button type="button" class="btn btn-outline-secondary" style="height: 54px !important; height: 27px !important; " (click)="EMAprocess({symb: symbolEMA.value, per: periodEMA.value})">Apply</button></div>
+    
+    <div [hidden]="!dispEMA" class="container" style="width: 53vw !important;  height: 350px;"  >
+      <canvas   #myCanvasEMA  > {{chartEMA}} </canvas>
+      <button type="button" class="btn btn-outline-secondary" style="height: 54px !important; height: 27px !important; margin-left: 15px !important; margin-top: 30px !important; " (click)="resetzoomEMA()">Reset Zoom</button>
+    </div>
+           
+              
+                  </div>
+                  </div>
+            
+                  <!-- modal-footer -->
+                  
+                </div>
+              </div>
+            <!-- tunindex--------------------------------------------------- -->
+            <div><div class="backdrop" [ngStyle]="{'display':display3}"></div></div>
+            <div style="width:70% ; height:50%;" style="margin-top:20px ;" class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display3}">
+              <!-- modal-dialog -->
+              <div class="modal-dialog" role="document">
+                <!-- modal-content -->
+                <div class="modal-content">
+                  <!-- modal-header -->
+                  <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" (click)="closeModalTunindex()"><span aria-hidden="true">&times;</span></button>
+                    <!-- <h4 class="modal-title">Login</h4> -->
+                  </div>
+            
+                  <!-- modal-body -->
+                  <div class="modal-body">
+                    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+                    <h2 class="w3-wide">Tunindex Price Per Day</h2>
+    <p class="w3-opacity">
+    <i> <br><img style="max-width:10%;
+      max-height:10%; padding-bottom:2px ;"[src]="tunisie"></i></p>
+     <div [hidden]="!disp5" class="container" style="width: 400px; height: 400px;"  >
+      <canvas   #myCanvastunindex  > {{charttunindex}} </canvas>
+    </div>
+  </div>
+              
+                  </div>
+                  </div>
+            
+                  <!-- modal-footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="closeModalTunindex()" >Close</button>
+                  </div>
+                </div>
+              </div>
+            
+            <!-- tunindex--------------------------------------------------- -->
+
+
+          </div>
+        </div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <ngx-spinner color="#fff"  ></ngx-spinner>
+          
+        <!--  <h3 style="
+          color: #3e4f52; font-family: 'Rouge Script', cursive; font-size: 30px; font-weight: normal; line-height: 48px; margin: 0 0 50px; text-align: center; text-shadow: 1px 1px 2px #082b34; " *ngIf="disp">{{today}}</h3>-->
+          
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+              <div style="box-shadow:
+              0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+              0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+              0 12.5px 10px rgba(0, 0, 0, 0.06),
+              0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+              0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+              0 100px 80px rgba(0, 0, 0, 0.12)
+            ;" class="card">
+                <div class="card-body p-3">
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="numbers">
+                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Indicator</p>
+                        <h5  class="font-weight-bolder mb-0">
+                          <span style="cursor: pointer;" (click)="openModalTunindex()">Brvm</span>
+                          <span style="color:red;" class="text-danger text-sm font-weight-bolder">{{tunichangeperc}}</span>
+                        </h5>
+                      </div>
+                    </div>
+                    <div class="col-4 text-end">
+                      <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                        <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"><img style="max-width:70%;
+                          max-height:70%; padding-bottom:9px ;"[src]="downimage"> </i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+              <div style="box-shadow:
+              0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+              0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+              0 12.5px 10px rgba(0, 0, 0, 0.06),
+              0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+              0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+              0 100px 80px rgba(0, 0, 0, 0.12)
+            ;" class="card">
+                <div class="card-body p-3">
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="numbers">
+                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Open</p>
+                        <h5 class="font-weight-bolder mb-0">
+                          {{tuniopen}}
+                          <span class="text-success text-sm font-weight-bolder"></span>
+                        </h5>
+                      </div>
+                    </div>
+                    <div class="col-4 text-end">
+                      <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                        <i class="ni ni-world text-lg opacity-10" aria-hidden="true"><img style="max-width:70%;
+                          max-height:70%; padding-bottom:9px ;"[src]="openimage"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+              <div style="box-shadow:
+              0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+              0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+              0 12.5px 10px rgba(0, 0, 0, 0.06),
+              0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+              0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+              0 100px 80px rgba(0, 0, 0, 0.12)
+            ;" class="card">
+                <div class="card-body p-3">
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="numbers">
+                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Price</p>
+                        <h5 class="font-weight-bolder mb-0">
+                          {{tuniprice}}
+                          <span class="text-danger text-sm font-weight-bolder">{{tunichange}}</span>
+                        </h5>
+                      </div>
+                    </div>
+                    <div class="col-4 text-end">
+                      <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                        <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"><img style="max-width:60%;
+                          max-height:60%;"[src]="priceimage"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+              <div style="box-shadow:
+              0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+              0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+              0 12.5px 10px rgba(0, 0, 0, 0.06),
+              0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+              0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+              0 100px 80px rgba(0, 0, 0, 0.12)
+            ;" class="card">
+                <div class="card-body p-3">
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="numbers">
+                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Volume</p>
+                        <h5 class="font-weight-bolder mb-0">
+                          {{tunivolume}}
+                          <span class="text-success text-sm font-weight-bolder"></span>
+                        </h5>
+                      </div>
+                    </div>
+                    <div class="col-4 text-end">
+                      <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                        <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"><img style="max-width:60%;
+                          max-height:60%;"[src]="volumeimage"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div style="box-shadow:
+          0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+          0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+          0 12.5px 10px rgba(0, 0, 0, 0.06),
+          0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+          0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+          0 100px 80px rgba(0, 0, 0, 0.12)
+        ;
+        
+          
+          
+          min-height: 200px;
+          width: 80vw;
+          margin: 5px auto;
+          background: white;
+          border-radius: 5px;" class="table-responsive">
+           
+            <div *ngIf="disp" style="width: 150;" class="table-wrapper-scroll-y my-custom-scrollbar">
+
+              <div class="table-responsive">
+                <table style="width: 150;" class="table table-hover table-nowrap">
+                  <thead class="thead-light">
+                    <tr>
+                      
+                      <th scope="col">date</th>
+                      <th scope="col">company</th>
+                  <th scope="col">symbol</th>
+                  <th scope="col">last</th>
+                  <th scope="col">open</th>
+                  <th scope="col">high</th>
+                  <th scope="col">low</th>
+  
+                  
+                  <th scope="col">chgperc</th>
+                  <th scope="col">volume</th>
+                  
+                  <th scope="col">type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let c of compan; let i = index">
+                      
+                      <td data-label=""> <a class="text-current" href="#">{{date[i]}}</a> </td>
+                      <td data-label="" ><button type="button" class="btn btn-outline-secondary" (click)="gethistorical(symbol[i])">{{compan[i]}}</button></td>
+                <td data-label=""><a class="text-current" href="#">{{symbol[i]}}</a></td>
+                <td data-label=""><a class="text-current" href="#">{{last[i]}}</a></td>
+                <td data-label=""><a class="text-current" href="#">{{realopen[i]}}</a></td>
+                <td data-label=""><a class="text-current" href="#">{{realhigh[i]}}</a></td>
+                <td data-label=""><a class="text-current" href="#">{{reallow[i]}}</a></td>
+                <td data-label=""><a class="text-current" href="#">{{chgperc[i]}}</a></td>
+                <td data-label=""><a class="text-current" href="#">{{volume[i]}}</a></td>
+                
+                <td data-label=""><a class="text-current" href="#">{{type[i]}}</a></td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+            
+            </div>
+          </div>
+         <!-- <h3 style="color: #3e4f52; font-family: 'Rouge Script', cursive; font-size: 30px; font-weight: normal; line-height: 48px; margin: 0 0 50px; text-align: center; text-shadow: 1px 1px 2px #082b34; " *ngIf="disp2">History</h3>-->
+
+
+<!--first row-->
+<div id="historicaldata" style=" padding-bottom: 30px;">
+
+<div style="box-shadow:
+0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+0 12.5px 10px rgba(0, 0, 0, 0.06),
+0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+0 100px 80px rgba(0, 0, 0, 0.12)
+;
+
+
+
+min-height: 200px;
+width: 80vw;
+margin: 25px auto;
+background: white;
+border-radius: 5px;" [hidden]="!disp2" class="row">
+
+<ngx-tabset customNavClass="nav-test-class" customTabsClass="container">
+  
+  <ngx-tab tabTitle="TABLE" tabSubTitle="Numerical Data">
+  <div style="width: 80vw !important;background: white!important;"  class="col-sm-6">
+    
+    <div style="width: 70vw !important; background: white!important;"  *ngIf="disp2" class="card">
+      
+      
+      <div  style="height: 350px; width: 70vw !important;background: white!important;" class="table-wrapper-scroll-y my-custom-scrollbar">
+        <h1>Tomorrow's Price : {{prediction[0][0]+prediction[0][1]+prediction[0][2]+prediction[0][3]+prediction[0][4]}}</h1>
+        <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+          <thead class="thead-light">
+          
+          <tr>
+           
+              
+          <th scope="col">date</th>
+          <th scope="col">price</th>
+          <th scope="col">low</th>
+          <th scope="col">high</th>
+          <th scope="col">volume</th>
+          <th scope="col">open</th>
+          <th scope="col">change</th>
+            
+            
+          </tr></thead>
+          <tbody>
+          <tr *ngFor="let c of date2; let i = index">
+            
+          <td data-label=""><a class="text-current" href="#">{{date2[i]}}</a></td>
+          <td data-label=""><a class="text-current" href="#">{{price[i]}}</a></td>
+          <td data-label=""><a class="text-current" href="#">{{low[i]}}</a></td>
+          <td data-label=""><a class="text-current" href="#">{{high[i]}}</a></td>
+          <td data-label=""><a class="text-current" href="#">{{vol[i]}}</a></td>
+          <td data-label=""><a class="text-current" href="#">{{open[i]}}</a></td>
+          <td data-label=""><a class="text-current" href="#">{{chg2[i]}}</a></td>
+          
+          
+          </tr></tbody>
+        </table>
+        </div>
+      
+        
+    
+        
+        
+      </div>
+      <div class="tcontainer">
+        <div class="ticker-wrap">
+            <div class="ticker-move" hover="animation-play-state: paused;"  style="animation: ticker 37s infinite;display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            animation-timing-function: linear;" >
+                <div *ngFor="let c of companynews" class="ticker-item">{{c}}</div>
+                
+            </div>
+        </div>
+    </div>
+    
+    </div>
+  </div>
+</ngx-tab>
+<ngx-tab tabTitle="CHART" tabSubTitle="Graph Data">
+  <div style="width: 70vw !important;background: white!important;"   class="col-sm-6">
+    
+    
+    <div class="allinputs"> <div class="select"> <select name="slct" id="cars" (change)='changeFunc($event)'>
+      <option value="daily" selected>daily</option>
+      <option value="monthly">monthly</option>
+    </select> </div> <input type="date" id="stardate" name="stardate" #stardate><input type="date" id="enddate" name="enddate" #enddate>
+    <button type="button" class="btn btn-outline-secondary" style="height: 54px !important;" (click)="onDate({start: stardate.value, end: enddate.value})">Apply</button></div>
+    
+    
+    
+    
+    
+    <div style="width: 72vw !important;background: white!important;"  id="piechart" [hidden]="!disp2" class="card">
+      
+      <div class="container" style="width: 70vw !important; height: 350px;"  >
+        
+        <canvas  #myCanvasline > {{chartline}} </canvas>
+      </div>
+    </div>
+  </div>
+</ngx-tab>
+
+<ngx-tab tabTitle="MA" tabSubTitle="Moving Average">
+  <div style="width: 70vw !important;background: white!important;"   class="col-sm-6">
+    
+    
+    
+    
+    
+    
+    <div style="width: 72vw !important;background: white!important;"  id="piechart" [hidden]="!disp2" class="card">
+      
+      <div class="container" style="width: 70vw !important; height: 350px;"  >
+        
+        <canvas  #myCanvasMA > {{chartMA}} </canvas>
+      </div>
+    </div>
+  </div>
+</ngx-tab>
+
+<ngx-tab tabTitle="Profil" tabSubTitle="Industry / Sector / Story">
+  <div style="width: 70vw !important;background: white!important;"   class="col-sm-6">
+    
+    
+    
+    
+   <div [hidden]="!disp2" *ngIf="disp2">
+    
+    <ul>
+      <li>industry : {{industry[0]}}</li>
+      <li>sector : {{sector[0]}}</li>
+      <li>story : {{story[0]}}</li>
+    </ul>
+    <button type="button" class="btn btn-outline-secondary" style="height: 54px !important;" (click)="openPDF()">get PDF</button>
+  </div>
+  </div>
+</ngx-tab>
+</ngx-tabset>
+</div>
+</div>
+<!-- <h3 style="color: #3e4f52; font-family: 'Rouge Script', cursive; font-size: 30px; font-weight: normal; line-height: 48px; margin: 0 0 50px; text-align: center; text-shadow: 1px 1px 2px #082b34; " [hidden]="!disp">Price Distribution</h3>-->
+<!--secondrow-->
+<div [hidden]="!disp" style="box-shadow:
+0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+0 12.5px 10px rgba(0, 0, 0, 0.06),
+0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+0 100px 80px rgba(0, 0, 0, 0.12)
+;
+
+
+
+min-height: 200px;
+width: 80vw;
+margin: 5px auto;
+background: white;
+border-radius: 5px;" class="row">
+  <div  class="col-sm-6">
+    
+    <div id="piechart" class="card">
+      <div class="container" style="width: 400px; height: 400px;"  >
+        <canvas  #myCanvasbar > {{chartbar}} </canvas>
+      </div>
+    </div>
+  </div>
+  <div  class="col-sm-6">
+    <div  id="piechart" class="card">
+      <div class="container" style="width: 400px; height: 400px;"  >
+        <canvas  #myCanvas > {{chartt}} </canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="box-shadow:
+          0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+          0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+          0 12.5px 10px rgba(0, 0, 0, 0.06),
+          0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+          0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+          0 100px 80px rgba(0, 0, 0, 0.12)
+        ;
+        
+          
+          
+          min-height: 200px;
+          width: 80vw;
+          margin: 5px auto;
+          background: white;
+          border-radius: 5px;" class="table-responsive">
+           
+            <div *ngIf="disp" style="width: 150;" class="table-wrapper-scroll-y my-custom-scrollbar">
+
+              <div class="table-responsive">
+                <table style="width: 150;" class="table table-hover table-nowrap">
+                  <thead class="thead-light">
+                    <tr>
+                      
+                      <th scope="col">Name</th>
+                      <th scope="col">Symbol</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Market</th>
+                  <th scope="col">Vol</th>
+                  <th scope="col">Change</th>
+                  
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let c of name; let i = index">
+                      
+                      <td data-label=""><a class="text-current" (click)='openmodalcrypto(symbolreal[i])' href="javascript:void(0);">{{name[i]}}</a></td>
+      <td data-label=""><a class="text-current" href="#">{{symbolreal[i]}}</a></td>
+      <td data-label=""><a class="text-current" href="#">{{pricereal[i]}}</a></td>
+      <td data-label=""><a class="text-current" href="#">{{market[i]}}</a></td>
+      <td data-label=""><a class="text-current" href="#">{{volreal[i]}}</a></td>
+      <td data-label=""><a class="text-current" href="#">{{chgreal[i]}}</a></td>
+      
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+            
+            </div>
+          </div>
+
+
+          <div [hidden]="!disp" style="box-shadow:
+0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+0 12.5px 10px rgba(0, 0, 0, 0.06),
+0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+0 100px 80px rgba(0, 0, 0, 0.12)
+;
+
+
+
+min-height: 200px;
+width: 80vw;
+margin: 5px auto;
+background: white;
+border-radius: 5px;" class="row">
+  <div  class="col-sm-6">
+    
+    <div id="piechart" class="card">
+      <div class="container" style="width: 400px; height: 400px;"  >
+        <canvas  #myCanvasbarcrypto > {{chartbarcrypto}} </canvas>
+      </div>
+    </div>
+  </div>
+  <div  class="col-sm-6">
+    <div  id="piechart" class="card">
+      <div class="container" style="width: 400px; height: 400px;"  >
+        <canvas  #myCanvaspiecrypto > {{chartpiecrypto}} </canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+        </main>
+      </div>
+      
+    </div>
+
+    
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+      $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
+  </body>
+</html>
